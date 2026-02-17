@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cartagena 2026 — Familia Ibarra</title>
+  <meta name="description" content="Itinerario Cartagena de Indias — Familia Ibarra — Feb 2026">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0A6E78">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+  <style>
+    /* === CUSTOM PROPERTIES === */
+    :root {
+      --arena: #F5F0E8;
+      --ocean: #0A6E78;
+      --ocean-light: rgba(10,110,120,0.08);
+      --ocean-medium: rgba(10,110,120,0.18);
+      --coral: #E8654A;
+      --coral-light: rgba(232,101,74,0.1);
+      --gold: #D4A853;
+      --gold-light: rgba(212,168,83,0.12);
+      --night: #1A2332;
+      --night-soft: rgba(26,35,50,0.5);
+      --white: #FFFFFF;
+      --radius-card: 16px;
+      --radius-chip: 100px;
+      --font-serif: 'DM Serif Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      --transition: 0.3s ease;
+      --shadow-card: 0 2px 12px rgba(26,35,50,0.08);
+      --shadow-hover: 0 4px 20px rgba(26,35,50,0.12);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --type-viaje: #0A6E78;
+      --type-cultural: #8B5CF6;
+      --type-playa: #E8654A;
+      --type-descanso: #D4A853;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--arena);
+      color: var(--night);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: var(--safe-bottom);
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+    img, video { max-width: 100%; display: block; }
+
+    /* === HERO === */
+    #hero {
+      position: relative;
+      padding: calc(var(--safe-top) + 52px) 24px 80px;
+      background: linear-gradient(135deg, var(--ocean) 0%, #0D8A96 40%, var(--gold) 100%);
+      color: var(--white);
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-overline {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: var(--radius-chip);
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+    .hero-wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+    }
+
+    /* === STATS BAR === */
+    #stats-bar {
+      display: flex;
+      gap: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    #stats-bar::-webkit-scrollbar { display: none; }
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      background: var(--white);
+      border-radius: var(--radius-chip);
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: var(--shadow-card);
+      flex-shrink: 0;
+    }
+    .stat-chip .material-symbols-rounded {
+      font-size: 18px;
+      color: var(--ocean);
+    }
+
+    /* === TAB NAVIGATION === */
+    #tab-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid rgba(26,35,50,0.08);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      display: flex;
+      padding: 0 8px;
+      box-shadow: 0 1px 8px rgba(26,35,50,0.04);
+    }
+    #tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 14px 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--night-soft);
+      background: none;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab-btn.active {
+      color: var(--ocean);
+      border-bottom-color: var(--ocean);
+      font-weight: 600;
+    }
+
+    /* === TAB PANELS === */
+    .tab-panel { display: none; padding: 20px 16px 40px; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === SECTION TITLES === */
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--night-soft);
+      margin-bottom: 20px;
+    }
+
+    /* === DAY CARDS (ACCORDION) === */
+    .day-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .day-card.active { box-shadow: var(--shadow-hover); }
+    .day-header {
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      gap: 12px;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      user-select: none;
+    }
+    .day-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .day-number.viaje { background: var(--type-viaje); }
+    .day-number.cultural { background: var(--type-cultural); }
+    .day-number.playa { background: var(--type-playa); }
+    .day-number.descanso { background: var(--type-descanso); }
+    .day-info { flex: 1; min-width: 0; }
+    .day-date {
+      font-size: 12px;
+      color: var(--night-soft);
+      font-weight: 500;
+    }
+    .day-title {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .day-type-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: var(--radius-chip);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .day-type-badge.viaje { background: rgba(10,110,120,0.1); color: var(--type-viaje); }
+    .day-type-badge.cultural { background: rgba(139,92,246,0.1); color: var(--type-cultural); }
+    .day-type-badge.playa { background: var(--coral-light); color: var(--type-playa); }
+    .day-type-badge.descanso { background: var(--gold-light); color: var(--type-descanso); }
+    .day-chevron {
+      transition: transform var(--transition);
+      color: var(--night-soft);
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .day-card.active .day-chevron { transform: rotate(180deg); }
+    .day-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .day-content {
+      padding: 0 16px 20px;
+    }
+    .day-content p {
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .day-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 14px 0 8px;
+    }
+    .day-content ul {
+      padding-left: 18px;
+      list-style: disc;
+      margin-bottom: 12px;
+    }
+    .day-content ul li {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .day-content ol {
+      padding-left: 18px;
+      margin-bottom: 12px;
+    }
+    .day-content ol li {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .day-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--night-soft);
+      margin-bottom: 6px;
+    }
+    .day-meta .material-symbols-rounded { font-size: 18px; color: var(--ocean); }
+    .day-tip {
+      display: flex;
+      gap: 10px;
+      background: var(--gold-light);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 14px 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #7A6320;
+    }
+    .day-tip .material-symbols-rounded {
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .day-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    /* === BADGES === */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      border-radius: var(--radius-chip);
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .badge:active { opacity: 0.7; }
+    .badge .material-symbols-rounded { font-size: 16px; }
+    .badge-ocean { background: var(--ocean-light); color: var(--ocean); }
+    .badge-coral { background: var(--coral-light); color: var(--coral); }
+    .badge-gold { background: var(--gold-light); color: #8B6914; }
+    .badge-purple { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+
+    /* === CALENDAR BUTTON === */
+    .calendar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: var(--radius-chip);
+      background: var(--ocean-light);
+      color: var(--ocean);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--ocean-medium);
+      transition: background var(--transition);
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+    .calendar-btn:active { background: var(--ocean-medium); }
+    .calendar-btn .material-symbols-rounded { font-size: 18px; }
+
+    /* === CAROUSEL === */
+    .carousel-container {
+      position: relative;
+      margin: 16px -16px 12px;
+      border-radius: 0;
+    }
+    .carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .carousel-slide video {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: #000;
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 10px 0 4px;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(26,35,50,0.2);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .carousel-dot.active {
+      background: var(--ocean);
+      transform: scale(1.4);
+    }
+
+    /* === ROUTE TIMELINE === */
+    .route-timeline {
+      display: flex;
+      flex-direction: column;
+      margin: 14px 0 16px;
+      padding: 0 2px;
+    }
+    .route-stop {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      padding: 6px 0;
+    }
+    .route-stop::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      height: calc(100% + 1px);
+      width: 0;
+      border-left: 2px dashed rgba(10,110,120,0.3);
+    }
+    .route-stop:last-child::before { display: none; }
+    .route-marker {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--ocean);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .route-marker.highlight { background: var(--coral); transform: scale(1.15); }
+    .route-label {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* === COLLAPSIBLE MENU === */
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: var(--radius-chip);
+      background: var(--ocean-light);
+      color: var(--ocean);
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--ocean-medium);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition);
+      margin: 8px 0;
+      font-family: var(--font-sans);
+    }
+    .menu-toggle:active { background: var(--ocean-medium); }
+    .menu-toggle .material-symbols-rounded {
+      font-size: 18px;
+      transition: transform var(--transition);
+    }
+    .menu-toggle.open .material-symbols-rounded { transform: rotate(180deg); }
+    .menu-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .menu-category { margin-bottom: 14px; }
+    .menu-category h5 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(26,35,50,0.05);
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-name { flex: 1; }
+    .menu-item-price {
+      color: var(--night-soft);
+      font-weight: 500;
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    /* === FLIGHT CARDS === */
+    .flight-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .flight-label {
+      padding: 16px 20px 0;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ocean);
+    }
+    .flight-route {
+      display: flex;
+      align-items: center;
+      padding: 20px 16px;
+      gap: 0;
+    }
+    .flight-city { text-align: center; flex-shrink: 0; }
+    .flight-code {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--ocean);
+      line-height: 1.2;
+    }
+    .flight-name {
+      font-size: 11px;
+      color: var(--night-soft);
+    }
+    .flight-time {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .flight-connector {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 6px;
+      min-width: 60px;
+    }
+    .flight-line {
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--ocean) 0 4px, transparent 4px 8px);
+      position: relative;
+    }
+    .flight-connector .material-symbols-rounded {
+      font-size: 18px;
+      color: var(--ocean);
+      margin-bottom: 4px;
+    }
+    .flight-layover {
+      font-size: 10px;
+      color: var(--night-soft);
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+    .flight-legs {
+      padding: 0 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .flight-leg {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .flight-leg .badge { font-size: 11px; padding: 3px 8px; }
+    .flight-actions {
+      padding: 0 20px 16px;
+    }
+
+    /* === COST TABLE === */
+    .cost-table {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(26,35,50,0.06);
+      gap: 12px;
+    }
+    .cost-row:last-child { border-bottom: none; }
+    .cost-row.cost-total {
+      background: var(--ocean);
+      color: var(--white);
+    }
+    .cost-name {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      min-width: 0;
+    }
+    .cost-name a {
+      display: inline-flex;
+      color: var(--ocean);
+      flex-shrink: 0;
+    }
+    .cost-total .cost-name a { color: var(--white); }
+    .cost-amount {
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cost-note {
+      font-size: 13px;
+      color: var(--night-soft);
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* === CLIMATE === */
+    .climate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .climate-item {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .climate-icon { font-size: 28px; margin-bottom: 6px; }
+    .climate-value {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--ocean);
+      line-height: 1.2;
+    }
+    .climate-label {
+      font-size: 12px;
+      color: var(--night-soft);
+      margin-top: 4px;
+    }
+    .climate-warning {
+      display: flex;
+      gap: 12px;
+      background: var(--coral-light);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      margin-top: 4px;
+    }
+    .climate-warning .material-symbols-rounded {
+      font-size: 24px;
+      color: var(--coral);
+      flex-shrink: 0;
+    }
+    .climate-warning strong {
+      font-size: 14px;
+      color: var(--coral);
+    }
+    .climate-warning p {
+      font-size: 13px;
+      color: var(--night-soft);
+      margin-top: 2px;
+    }
+    .climate-summary {
+      background: var(--ocean-light);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .climate-summary p {
+      font-size: 14px;
+      color: var(--ocean);
+      font-weight: 500;
+    }
+
+    /* === CONVERTER === */
+    .converter-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 18px;
+    }
+    .converter-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .converter-select {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border: 2px solid rgba(26,35,50,0.1);
+      border-radius: var(--radius-chip);
+      background: var(--arena);
+      color: var(--night);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      min-width: 100px;
+    }
+    .converter-input {
+      flex: 1;
+      font-size: 28px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--night);
+      text-align: right;
+      outline: none;
+      min-width: 0;
+    }
+    .converter-input::placeholder { color: rgba(26,35,50,0.2); }
+    .converter-result {
+      flex: 1;
+      font-size: 28px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      color: var(--ocean);
+      text-align: right;
+    }
+    .swap-container {
+      display: flex;
+      justify-content: center;
+      padding: 6px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .swap-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--ocean);
+      color: var(--white);
+      border: 3px solid var(--arena);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition);
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: var(--shadow-card);
+    }
+    .swap-btn:active { transform: rotate(180deg); }
+    .swap-btn .material-symbols-rounded { font-size: 22px; }
+    .converter-shortcuts {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .shortcut-chip {
+      padding: 8px 14px;
+      border-radius: var(--radius-chip);
+      background: var(--ocean-light);
+      color: var(--ocean);
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition);
+    }
+    .shortcut-chip:active { background: var(--ocean-medium); }
+    .converter-note {
+      font-size: 12px;
+      color: var(--night-soft);
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* === INFO CARDS === */
+    .info-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .info-card h3 .material-symbols-rounded {
+      font-size: 22px;
+      color: var(--ocean);
+    }
+    .info-card p {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .info-card ul {
+      padding-left: 18px;
+      list-style: disc;
+    }
+    .info-card ul li {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .contact-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: var(--radius-chip);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .whatsapp-btn:active { opacity: 0.8; }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      color: var(--night-soft);
+    }
+    footer p:first-child {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--night);
+      margin-bottom: 4px;
+    }
+    footer .footer-sub { font-size: 13px; }
+
+    /* === RESPONSIVE === */
+    @media (min-width: 768px) {
+      main { max-width: 600px; margin: 0 auto; }
+      #stats-bar { justify-content: center; }
+      #tab-nav { justify-content: center; }
+      .climate-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      main { max-width: 680px; }
+      #hero { padding: 80px 40px 100px; }
+      .hero-title { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header id="hero">
+    <div class="hero-overline">Febrero 2026</div>
+    <h1 class="hero-title">Cartagena<br>de Indias</h1>
+    <div class="hero-badge">19 FEB &mdash; 28 FEB 2026</div>
+    <p class="hero-subtitle">Familia Ibarra &middot; 4 personas &middot; Radisson Ocean Pavillion &middot; 9 noches</p>
+    <svg class="hero-wave" viewBox="0 0 1440 50" preserveAspectRatio="none">
+      <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,50 L0,50 Z" fill="#F5F0E8"/>
+    </svg>
+  </header>
+
+  <!-- ===== STATS BAR ===== -->
+  <div id="stats-bar">
+    <div class="stat-chip"><span class="material-symbols-rounded">calendar_month</span> 10 dias</div>
+    <div class="stat-chip"><span class="material-symbols-rounded">dark_mode</span> 9 noches</div>
+    <div class="stat-chip"><span class="material-symbols-rounded">restaurant</span> Desayuno incluido</div>
+    <div class="stat-chip"><span class="material-symbols-rounded">payments</span> $600 USD</div>
+    <div class="stat-chip"><span class="material-symbols-rounded">wb_sunny</span> 31°C</div>
+  </div>
+
+  <!-- ===== TAB NAVIGATION ===== -->
+  <nav id="tab-nav">
+    <button class="tab-btn active" data-tab="itinerario">Itinerario</button>
+    <button class="tab-btn" data-tab="vuelos">Vuelos</button>
+    <button class="tab-btn" data-tab="costos">Costos</button>
+    <button class="tab-btn" data-tab="clima">Clima</button>
+    <button class="tab-btn" data-tab="conversor">Conversor</button>
+    <button class="tab-btn" data-tab="info">Info util</button>
+  </nav>
+
+  <!-- ===== TAB CONTENT ===== -->
+  <main id="content">
+
+    <!-- ==================== ITINERARIO ==================== -->
+    <section id="tab-itinerario" class="tab-panel active">
+
+      <!-- DIA 1 -->
+      <div class="day-card" data-day="1">
+        <div class="day-header">
+          <div class="day-number viaje">1</div>
+          <div class="day-info">
+            <div class="day-date">Jue 19 Feb</div>
+            <div class="day-title">Llegada a Cartagena</div>
+          </div>
+          <span class="day-type-badge viaje">Viaje</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Vuelo SCL &rarr; BOG &rarr; CTG (llegada 15:40)</p>
+            <p>Traslado aeropuerto &rarr; hotel</p>
+            <p>Check-in desde las 15:00</p>
+            <p>Descanso y cena libre en Bocagrande</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">schedule</span> 07:25 &ndash; 17:00
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> Incluido en paquete de actividades
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Aprovechen de caminar por el malecón de Bocagrande al atardecer para ir conociendo la zona</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day1">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 2 -->
+      <div class="day-card" data-day="2">
+        <div class="day-header">
+          <div class="day-number cultural">2</div>
+          <div class="day-info">
+            <div class="day-date">Vie 20 Feb</div>
+            <div class="day-title">Tour Garcia Márquez</div>
+          </div>
+          <span class="day-type-badge cultural">Cultural</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Tour privado a pie por el casco histórico con Nexperience</p>
+            <p>Recorrido literario por los escenarios de Gabo: Camellón de los Mártires, Plaza Cervantes, Parque San Diego, Teatro Adolfo Mejía</p>
+            <p>Incluye bebida de bienvenida y recogida en hotel</p>
+            <h4>Itinerario del tour</h4>
+            <ol>
+              <li><strong>Camellón de los Mártires</strong> — Llegada de García Márquez a la ciudad</li>
+              <li><strong>Plaza Cervantes</strong> — La historia del periodista "Gabo"</li>
+              <li><strong>Calle del Tablón</strong> — Primeros años de vida en Cartagena</li>
+              <li><strong>Calle Primera de Badillo</strong> — Conexiones con la historia de Gabo</li>
+              <li><strong>Parque Fernández de Madrid</strong> — Historias y libros con la Iglesia de Santo Toribio</li>
+              <li><strong>Parque San Diego</strong> — Escenarios de sus libros cobran vida</li>
+              <li><strong>La Serrezuela</strong> — La antigua plaza de toros y su historia</li>
+              <li><strong>Teatro Adolfo Mejía</strong> — Legado final de García Márquez</li>
+            </ol>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">schedule</span> 09:00 &ndash; 11:30 (2.5 horas)
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $130 USD (familia completa, incluye guía privado y bebidas)
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">wb_sunny</span> Tarde libre: explorar las murallas, helados, fotos
+            </div>
+            <div class="day-links">
+              <a href="https://nexperience.com.co/tour-privado-a-pie-gabriel-garcia-marquez/" target="_blank" rel="noopener" class="badge badge-purple">
+                <span class="material-symbols-rounded">language</span> Ver tour
+              </a>
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>El Teatro Adolfo Mejía es espectacular por dentro. Lleven cámara. La tarde es ideal para recorrer las murallas al propio ritmo.</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day2">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 3 -->
+      <div class="day-card" data-day="3">
+        <div class="day-header">
+          <div class="day-number descanso">3</div>
+          <div class="day-info">
+            <div class="day-date">Sáb 21 Feb</div>
+            <div class="day-title">Día Libre</div>
+          </div>
+          <span class="day-type-badge descanso">Descanso</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Día de relax total post-tour</p>
+            <p>Piscina del hotel, playa en Bocagrande</p>
+            <p>Opción: pasear por Centro Comercial La Serrezuela (aire acondicionado, tiendas, gastronomía)</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $0 (desayuno incluido)
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>La Serrezuela queda en el centro amurallado y tiene una terraza en el último piso con vista panorámica. Ideal para almorzar.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 4 -->
+      <div class="day-card" data-day="4">
+        <div class="day-header">
+          <div class="day-number playa">4</div>
+          <div class="day-info">
+            <div class="day-date">Dom 22 Feb</div>
+            <div class="day-title">Tierra Bomba — Fenix Beach</div>
+          </div>
+          <span class="day-type-badge playa">Playa</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Fenix Beach Club: N°1 en Tierra Bomba (4.5★ TripAdvisor)</p>
+            <p>Trayecto en lancha: solo 15 minutos desde Cartagena</p>
+            <p style="display:inline-flex;align-items:center;gap:6px;background:var(--coral-light);color:var(--coral);padding:5px 12px;border-radius:var(--radius-chip);font-size:13px;font-weight:600;margin-bottom:12px">🔥 Zona Top + Upgrade almuerzo</p>
+
+            <h4>Zona Top incluye</h4>
+            <ul>
+              <li>📍 Ubicación 1° línea frente al mar o La Punta Premium (frente al DJ y al mar)</li>
+              <li>🍹 Welcome drink (con o sin alcohol)</li>
+              <li>🚤 Transporte en lancha ida y regreso</li>
+              <li>🍽️ Almuerzo a elegir (ver opciones abajo)</li>
+              <li>🥤 Bebida no alcohólica</li>
+              <li>🍨 Postre del día</li>
+              <li>🏖️ Toalla por persona</li>
+              <li>🏊 Acceso completo: piscina, bar, restaurante, cancha de vólley, sombras y camas</li>
+            </ul>
+
+            <h4>🍽️ Opciones de almuerzo</h4>
+
+            <div style="background:var(--coral-light);border-radius:12px;padding:14px;margin-bottom:10px">
+              <div style="font-size:13px;font-weight:600;color:var(--coral);margin-bottom:8px">⭐ Upgrade</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🦐 Cazuela de mariscos</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🥘 Paella de mar</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🐟 Robalo frito</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🍕 Pizza (7 opciones)</span>
+              </div>
+            </div>
+
+            <div style="background:var(--ocean-light);border-radius:12px;padding:14px;margin-bottom:14px">
+              <div style="font-size:13px;font-weight:600;color:var(--ocean);margin-bottom:8px">🍴 Opciones base</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🐠 Pescado isleño</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🥗 Paella de la huerta</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🍗 Pechuga a la plancha</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🍣 Sushi (7 opciones)</span>
+                <span style="background:var(--white);padding:5px 10px;border-radius:var(--radius-chip);font-size:13px">🥙 Pokes (4 opciones)</span>
+              </div>
+            </div>
+
+            <h4>Horarios de lancha</h4>
+            <p>Ida: 9:30 / 10:30 / 11:30 / 13:30</p>
+            <p>Regreso: 16:30 / 17:30 / 18:30</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $150 USD (4 personas)
+            </div>
+            <div class="day-links">
+              <a href="https://fenix.co/#pasadias" target="_blank" rel="noopener" class="badge badge-coral">
+                <span class="material-symbols-rounded">language</span> Fenix Beach
+              </a>
+              <a href="https://menupp.co/fenixbeach/venue/u9V1jNkXghZacviz5F9t/menu/76ed68b4-c748-4a91-b19c-74d150617f64?type=normal&category=Pw44eWNcGNRVEQn8SDtd" target="_blank" rel="noopener" class="badge badge-gold">
+                <span class="material-symbols-rounded">restaurant_menu</span> Ver menú
+              </a>
+              <a href="https://www.tripadvisor.cl/Hotel_Review-g1604046-d12302015-Reviews-Hotel_Fenix_Beach_Cartagena-Isla_Tierra_Bomba_Cartagena_District_Bolivar_Department.html" target="_blank" rel="noopener" class="badge badge-ocean">
+                <span class="material-symbols-rounded">star</span> TripAdvisor
+              </a>
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Lleguen en la primera lancha (9:30) para aprovechar el día completo. El club tiene hamacas, sombra y bar. Lleven protector solar.</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day4">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 5 -->
+      <div class="day-card" data-day="5">
+        <div class="day-header">
+          <div class="day-number descanso">5</div>
+          <div class="day-info">
+            <div class="day-date">Lun 23 Feb</div>
+            <div class="day-title">Día Libre</div>
+          </div>
+          <span class="day-type-badge descanso">Descanso</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Descanso post-playa</p>
+            <p>Opción: recorrer barrio Manga (arquitectura colonial, tranquilo)</p>
+            <p>Opción: compras en Las Bóvedas (artesanías y souvenirs)</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $0 (desayuno incluido)
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Las Bóvedas son las antiguas bóvedas militares de la muralla convertidas en tiendas de artesanías. Buen lugar para souvenirs, pero siempre regateen.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 6 -->
+      <div class="day-card" data-day="6">
+        <div class="day-header">
+          <div class="day-number playa">6</div>
+          <div class="day-info">
+            <div class="day-date">Mar 24 Feb</div>
+            <div class="day-title">Islas del Rosario</div>
+          </div>
+          <span class="day-type-badge playa">Playa</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Día completo en lancha privada de 29 pies recorriendo el archipiélago</p>
+            <p>Estadía principal en <strong>Isla Majagua</strong> — Hotel San Pedro de Majagua con restaurante gourmet caribeño <strong>Ondina</strong> frente al mar</p>
+            <p style="display:inline-flex;align-items:center;gap:6px;background:var(--coral-light);color:var(--coral);padding:5px 12px;border-radius:var(--radius-chip);font-size:13px;font-weight:600;margin-bottom:12px">⚠️ Almuerzo NO incluido — consumo directo en restaurante Ondina</p>
+
+            <h4>🗺️ Recorrido del día</h4>
+            <div class="route-timeline">
+              <div class="route-stop">
+                <div class="route-marker">1</div>
+                <div class="route-label">🚤 Marina — Salida desde Cartagena</div>
+              </div>
+              <div class="route-stop">
+                <div class="route-marker">2</div>
+                <div class="route-label">🏝️ Isla Grande — Primera parada</div>
+              </div>
+              <div class="route-stop">
+                <div class="route-marker">3</div>
+                <div class="route-label">🌊 Tour panorámico por las islas</div>
+              </div>
+              <div class="route-stop">
+                <div class="route-marker highlight">4</div>
+                <div class="route-label">🍽️ <strong>Isla Majagua</strong> — Hotel San Pedro de Majagua</div>
+              </div>
+              <div class="route-stop">
+                <div class="route-marker">5</div>
+                <div class="route-label">🏖️ Barú — Playa Barú</div>
+              </div>
+              <div class="route-stop">
+                <div class="route-marker">6</div>
+                <div class="route-label">🚤 Marina — Regreso a Cartagena</div>
+              </div>
+            </div>
+
+            <!-- MAPA DE RUTA -->
+            <div style="margin:16px -16px 12px;overflow:hidden">
+              <img src="assets/rosario/mapa-ruta.png" alt="Mapa del itinerario Islas del Rosario" style="width:100%;height:auto;display:block" loading="lazy">
+            </div>
+
+            <h4>La lancha privada incluye</h4>
+            <ul>
+              <li>🚤 Transporte desde/hasta el hotel</li>
+              <li>👨‍✈️ Capitán y marinero</li>
+              <li>🧊 Nevera con hielo</li>
+              <li>🤿 Equipo de snorkel</li>
+              <li>💧 Botellas de agua</li>
+            </ul>
+
+            <!-- CAROUSEL -->
+            <div class="carousel-container" id="rosario-carousel">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="assets/rosario/isla-01.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-02.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-03.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-04.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-05.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-06.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-07.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-08.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-09.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-10.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-11.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><img src="assets/rosario/isla-12.jpeg" alt="Isla privada del Rosario" loading="lazy"></div>
+                <div class="carousel-slide"><video src="assets/rosario/video-01.mp4" controls preload="none" playsinline></video></div>
+                <div class="carousel-slide"><video src="assets/rosario/video-02.mp4" controls preload="none" playsinline></video></div>
+                <div class="carousel-slide"><video src="assets/rosario/video-03.mp4" controls preload="none" playsinline></video></div>
+                <div class="carousel-slide"><video src="assets/rosario/video-04.mp4" controls preload="none" playsinline></video></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+
+            <!-- RESTAURANTE ONDINA -->
+            <h4>🍽️ Restaurante Ondina — Hotel San Pedro de Majagua</h4>
+            <p>Carta gourmet caribeña frente al mar. Precios en COP, IPC incluido.</p>
+
+            <button class="menu-toggle" id="ondina-toggle">
+              🍽️ Ver carta restaurante Ondina
+              <span class="material-symbols-rounded">expand_more</span>
+            </button>
+
+            <div class="menu-body" id="ondina-menu">
+              <div class="menu-category">
+                <h5>🥶 Entradas frías</h5>
+                <div class="menu-item"><span class="menu-item-name">Ceviches (variedad)</span><span class="menu-item-price">desde $39.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Tiraditos</span><span class="menu-item-price">desde $39.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Tartares</span><span class="menu-item-price">desde $39.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🔥 Entradas calientes</h5>
+                <div class="menu-item"><span class="menu-item-name">Pulpo asado</span><span class="menu-item-price">$68.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Mariscos crispy</span><span class="menu-item-price">$40.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Langostinos al curry</span><span class="menu-item-price">$52.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🥗 Ensaladas</h5>
+                <div class="menu-item"><span class="menu-item-name">Griega con camarones</span><span class="menu-item-price">$40.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Mediterránea</span><span class="menu-item-price">$43.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Thai</span><span class="menu-item-price">$38.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🍚 Arroces y pastas</h5>
+                <div class="menu-item"><span class="menu-item-name">Arroz caribeño / mariscos / frito Majagua / catalán</span><span class="menu-item-price">$65.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Fettuccini carbonara</span><span class="menu-item-price">$45.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🐟 Pescados y mariscos</h5>
+                <div class="menu-item"><span class="menu-item-name">Pesca del día</span><span class="menu-item-price">$70.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Pargo rojo entero</span><span class="menu-item-price">$98.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Filete caribeño</span><span class="menu-item-price">$75.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Cazuela de mariscos</span><span class="menu-item-price">$95.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Langosta</span><span class="menu-item-price">desde $200.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🥩 Carnes</h5>
+                <div class="menu-item"><span class="menu-item-name">Filet mignon</span><span class="menu-item-price">$75.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Baby beef</span><span class="menu-item-price">$62.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Lomo saltado</span><span class="menu-item-price">$62.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Picada mixta</span><span class="menu-item-price">$95.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>👶 Menú infantil</h5>
+                <div class="menu-item"><span class="menu-item-name">Nuggets</span><span class="menu-item-price">$40.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Palitos de pescado</span><span class="menu-item-price">$38.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Mini hamburguesas</span><span class="menu-item-price">$38.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Pastas</span><span class="menu-item-price">$38.000</span></div>
+              </div>
+              <div class="menu-category">
+                <h5>🍨 Postres</h5>
+                <div class="menu-item"><span class="menu-item-name">Volcán de chocolate</span><span class="menu-item-price">$30.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Crème brûlée de coco</span><span class="menu-item-price">$30.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Brownie</span><span class="menu-item-price">$25.000</span></div>
+                <div class="menu-item"><span class="menu-item-name">Copa de helado</span><span class="menu-item-price">$20.000</span></div>
+              </div>
+              <p style="font-size:12px;color:var(--night-soft);margin-top:8px;font-style:italic">Precios en Pesos Colombianos (COP). IPC incluido. Propina sugerida 10%.</p>
+            </div>
+
+            <div class="day-meta">
+              <span class="material-symbols-rounded">schedule</span> 09:00 &ndash; 17:00 (día completo)
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $200 USD (lancha privada, 4 personas)
+            </div>
+            <div class="day-links">
+              <a href="https://nataltravelcartagena.com/experiencias.html" target="_blank" rel="noopener" class="badge badge-ocean">
+                <span class="material-symbols-rounded">language</span> Natal Travel
+              </a>
+              <a href="assets/carta-ondina.pdf" target="_blank" rel="noopener" class="badge badge-coral">
+                <span class="material-symbols-rounded">restaurant_menu</span> Carta Ondina (PDF)
+              </a>
+              <a href="https://www.tripadvisor.cl/Hotel_Review-g6503218-d315388-Reviews-Hotel_San_Pedro_de_Majagua-Isla_Grande_Islas_de_Rosario_Cartagena_District_Bolivar_Dep.html" target="_blank" rel="noopener" class="badge badge-gold">
+                <span class="material-symbols-rounded">star</span> Hotel San Pedro de Majagua — TripAdvisor
+              </a>
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>El almuerzo en Ondina es por cuenta propia — revisen la carta antes para elegir. Lleven protector solar, cámara acuática y efectivo/tarjeta para el restaurante.</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day6">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 7 -->
+      <div class="day-card" data-day="7">
+        <div class="day-header">
+          <div class="day-number descanso">7</div>
+          <div class="day-info">
+            <div class="day-date">Mié 25 Feb</div>
+            <div class="day-title">Día Libre</div>
+          </div>
+          <span class="day-type-badge descanso">Descanso</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Día libre a elección post-isla:</p>
+            <ul>
+              <li><strong>Opción A:</strong> Spa o masajes (el hotel puede recomendar)</li>
+              <li><strong>Opción B:</strong> Repetir el lugar favorito de la semana</li>
+              <li><strong>Opción C:</strong> Piscina y relax total</li>
+            </ul>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $0 (desayuno incluido)
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Es el día perfecto para descansar y volver a ese rincón que más les gustó.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 8 -->
+      <div class="day-card" data-day="8">
+        <div class="day-header">
+          <div class="day-number cultural">8</div>
+          <div class="day-info">
+            <div class="day-date">Jue 26 Feb</div>
+            <div class="day-title">Tour Histórico + Café del Mar</div>
+          </div>
+          <span class="day-type-badge cultural">Cultural</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>La mejor manera de conocer y palpar la historia de Cartagena contada paso a paso por guías profesionales</p>
+            <h4>Tour histórico con Natal Travel</h4>
+            <ul>
+              <li>Adentrarse en los túneles del imponente Castillo de San Felipe de Barajas</li>
+              <li>Explorar cada rincón del pintoresco barrio de Getsemaní</li>
+              <li>Las empedradas calles de la ciudad amurallada y su arquitectura</li>
+              <li>Una experiencia interesante e inolvidable</li>
+            </ul>
+            <h4>El tour incluye</h4>
+            <ul>
+              <li>Guía profesional bilingüe</li>
+              <li>Transporte privado</li>
+              <li>Tickets de entrada al Castillo de San Felipe de Barajas</li>
+            </ul>
+            <p><strong>Atardecer:</strong> Café del Mar sobre las murallas (icónico de Cartagena)</p>
+            <p><strong>Noche:</strong> Cena especial de despedida en Getsemaní</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">schedule</span> 09:00 &ndash; 21:00 (tour 4h + atardecer + cena)
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $80 USD (tour completo + consumo Café del Mar, 4 personas)
+            </div>
+            <div class="day-links">
+              <a href="https://nataltravelcartagena.com/experiencias.html" target="_blank" rel="noopener" class="badge badge-ocean">
+                <span class="material-symbols-rounded">language</span> Natal Travel
+              </a>
+              <a href="https://www.tripadvisor.com/Attraction_Review-g297476-d16672954-Reviews-Natal_Concierge-Cartagena_Cartagena_District_Bolivar_Department.html" target="_blank" rel="noopener" class="badge badge-gold">
+                <span class="material-symbols-rounded">star</span> TripAdvisor
+              </a>
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Recorran los túneles del castillo, son fascinantes. Lleguen a Café del Mar a las 17:00 para buena mesa. El atardecer en la muralla es el mejor cierre del viaje. Reservar Café del Mar con anticipación.</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day8">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 9 -->
+      <div class="day-card" data-day="9">
+        <div class="day-header">
+          <div class="day-number descanso">9</div>
+          <div class="day-info">
+            <div class="day-date">Vie 27 Feb</div>
+            <div class="day-title">Día Libre — Último día completo</div>
+          </div>
+          <span class="day-type-badge descanso">Descanso</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Compras finales, última pasada por el centro histórico</p>
+            <p>Disfrutar piscina del hotel</p>
+            <p>Preparar maletas</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> $0 (desayuno incluido)
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Disfruten sin prisa. Es el último día completo en Cartagena.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIA 10 -->
+      <div class="day-card" data-day="10">
+        <div class="day-header">
+          <div class="day-number viaje">10</div>
+          <div class="day-info">
+            <div class="day-date">Sáb 28 Feb</div>
+            <div class="day-title">Regreso a Santiago</div>
+          </div>
+          <span class="day-type-badge viaje">Viaje</span>
+          <span class="material-symbols-rounded day-chevron">expand_more</span>
+        </div>
+        <div class="day-body">
+          <div class="day-content">
+            <p>Check-out hasta 12:00</p>
+            <p>Mañana libre (piscina, últimas compras)</p>
+            <p>Traslado al aeropuerto ~16:00</p>
+            <p>Vuelo CTG &rarr; BOG &rarr; SCL (llegada 05:30 del 1 de Marzo)</p>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">schedule</span> Vuelo 18:20 &ndash; 05:30 (+1)
+            </div>
+            <div class="day-meta">
+              <span class="material-symbols-rounded">payments</span> Incluido en paquete de actividades
+            </div>
+            <div class="day-tip">
+              <span class="material-symbols-rounded">lightbulb</span>
+              <span>Dejen las maletas en conserjería después del check-out y aprovechen la piscina hasta las 15:00. Llegar al aeropuerto a las 16:00.</span>
+            </div>
+            <a class="calendar-btn" href="#" data-calendar="day10">
+              <span class="material-symbols-rounded">event</span> Agregar al calendario
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VUELOS ==================== -->
+    <section id="tab-vuelos" class="tab-panel">
+      <h2 class="section-title">Vuelos</h2>
+      <p class="section-subtitle">Avianca &middot; Escala en Bogotá</p>
+
+      <!-- IDA -->
+      <div class="flight-card">
+        <div class="flight-label">Ida &middot; Jueves 19 Febrero</div>
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">SCL</div>
+            <div class="flight-name">Santiago</div>
+            <div class="flight-time">07:25</div>
+          </div>
+          <div class="flight-connector">
+            <span class="material-symbols-rounded">flight</span>
+            <div class="flight-line"></div>
+            <div class="flight-layover">AV0098</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">BOG</div>
+            <div class="flight-name">Bogotá</div>
+            <div class="flight-time">11:45</div>
+            <div class="flight-layover">Escala 2h 25min</div>
+          </div>
+          <div class="flight-connector">
+            <span class="material-symbols-rounded">flight</span>
+            <div class="flight-line"></div>
+            <div class="flight-layover">AV9772</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">CTG</div>
+            <div class="flight-name">Cartagena</div>
+            <div class="flight-time">15:40</div>
+          </div>
+        </div>
+        <div class="flight-actions">
+          <a class="calendar-btn" href="#" data-calendar="flight-ida">
+            <span class="material-symbols-rounded">event</span> Agregar al calendario
+          </a>
+        </div>
+      </div>
+
+      <!-- VUELTA -->
+      <div class="flight-card">
+        <div class="flight-label">Vuelta &middot; Sábado 28 Febrero</div>
+        <div class="flight-route">
+          <div class="flight-city">
+            <div class="flight-code">CTG</div>
+            <div class="flight-name">Cartagena</div>
+            <div class="flight-time">18:20</div>
+          </div>
+          <div class="flight-connector">
+            <span class="material-symbols-rounded">flight</span>
+            <div class="flight-line"></div>
+            <div class="flight-layover">AV9747</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">BOG</div>
+            <div class="flight-name">Bogotá</div>
+            <div class="flight-time">20:00</div>
+            <div class="flight-layover">Escala 1h 35min</div>
+          </div>
+          <div class="flight-connector">
+            <span class="material-symbols-rounded">flight</span>
+            <div class="flight-line"></div>
+            <div class="flight-layover">AV0097</div>
+          </div>
+          <div class="flight-city">
+            <div class="flight-code">SCL</div>
+            <div class="flight-name">Santiago</div>
+            <div class="flight-time">05:30</div>
+            <div class="flight-layover">+1 día</div>
+          </div>
+        </div>
+        <div class="flight-actions">
+          <a class="calendar-btn" href="#" data-calendar="flight-vuelta">
+            <span class="material-symbols-rounded">event</span> Agregar al calendario
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COSTOS ==================== -->
+    <section id="tab-costos" class="tab-panel">
+      <h2 class="section-title">Actividades y Tours</h2>
+      <p class="section-subtitle">Presupuesto para 4 personas</p>
+
+      <div class="cost-table">
+        <div class="cost-row">
+          <div class="cost-name">Traslados aeropuerto (ida + vuelta)</div>
+          <div class="cost-amount">$40 USD</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-name">
+            Tour García Márquez — Nexperience
+            <a href="https://nexperience.com.co/tour-privado-a-pie-gabriel-garcia-marquez/" target="_blank" rel="noopener">
+              <span class="material-symbols-rounded" style="font-size:16px;color:var(--ocean)">open_in_new</span>
+            </a>
+          </div>
+          <div class="cost-amount">$130 USD</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-name">
+            Tierra Bomba — Fenix Beach Club
+            <a href="https://fenix.co/#pasadias" target="_blank" rel="noopener">
+              <span class="material-symbols-rounded" style="font-size:16px;color:var(--ocean)">open_in_new</span>
+            </a>
+          </div>
+          <div class="cost-amount">$150 USD</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-name">
+            Islas del Rosario — Lancha privada + isla
+            <a href="https://nataltravelcartagena.com/experiencias.html" target="_blank" rel="noopener">
+              <span class="material-symbols-rounded" style="font-size:16px;color:var(--ocean)">open_in_new</span>
+            </a>
+          </div>
+          <div class="cost-amount">$200 USD</div>
+        </div>
+        <div class="cost-row">
+          <div class="cost-name">
+            Tour Histórico + Getsemaní + Café del Mar
+            <a href="https://nataltravelcartagena.com/experiencias.html" target="_blank" rel="noopener">
+              <span class="material-symbols-rounded" style="font-size:16px;color:var(--ocean)">open_in_new</span>
+            </a>
+          </div>
+          <div class="cost-amount">$80 USD</div>
+        </div>
+        <div class="cost-row cost-total">
+          <div class="cost-name"><strong>Total Actividades</strong></div>
+          <div class="cost-amount"><strong>$600 USD</strong></div>
+        </div>
+      </div>
+
+      <p class="cost-note">Todos los días incluyen desayuno en el hotel. Vuelos y hotel no incluidos en este presupuesto.</p>
+    </section>
+
+    <!-- ==================== CLIMA ==================== -->
+    <section id="tab-clima" class="tab-panel">
+      <h2 class="section-title">Clima en Febrero</h2>
+      <p class="section-subtitle">El mes más seco y soleado de Cartagena</p>
+
+      <div class="climate-grid">
+        <div class="climate-item">
+          <div class="climate-icon">🌡️</div>
+          <div class="climate-value">31–32°C</div>
+          <div class="climate-label">Temp. máxima</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">🌙</div>
+          <div class="climate-value">24–25°C</div>
+          <div class="climate-label">Temp. mínima</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">🥵</div>
+          <div class="climate-value">~38°C</div>
+          <div class="climate-label">Sensación térmica</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">☀️</div>
+          <div class="climate-value">9–10h</div>
+          <div class="climate-label">Horas de sol</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">💧</div>
+          <div class="climate-value">~3mm</div>
+          <div class="climate-label">Lluvia total</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">💦</div>
+          <div class="climate-value">66–71%</div>
+          <div class="climate-label">Humedad</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">🌊</div>
+          <div class="climate-value">27°C</div>
+          <div class="climate-label">Temp. del mar</div>
+        </div>
+        <div class="climate-item">
+          <div class="climate-icon">🌅</div>
+          <div class="climate-value">06:16 / 18:12</div>
+          <div class="climate-label">Amanecer / Atardecer</div>
+        </div>
+      </div>
+
+      <div class="climate-warning">
+        <span class="material-symbols-rounded">warning</span>
+        <div>
+          <strong>Índice UV: Alto (7)</strong>
+          <p>Usar protector solar SPF 50+ siempre. Sombrero y mantenerse hidratados.</p>
+        </div>
+      </div>
+
+      <div class="climate-summary">
+        <p>Febrero es el mes más seco y soleado de Cartagena. Calor tropical con brisa. Ideal para playa. Llevar ropa muy ligera, protector solar, sombrero y mantenerse hidratados.</p>
+      </div>
+    </section>
+
+    <!-- ==================== CONVERSOR ==================== -->
+    <section id="tab-conversor" class="tab-panel">
+      <h2 class="section-title">Conversor de Moneda</h2>
+      <p class="section-subtitle">Tasas referenciales Febrero 2026</p>
+
+      <div class="converter-card">
+        <div class="converter-row">
+          <select id="from-currency" class="converter-select">
+            <option value="CLP">🇨🇱 CLP</option>
+            <option value="USD">🇺🇸 USD</option>
+            <option value="COP">🇨🇴 COP</option>
+          </select>
+          <input type="text" id="from-amount" class="converter-input" inputmode="decimal" placeholder="0" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="swap-container">
+        <button id="swap-btn" class="swap-btn" aria-label="Invertir monedas">
+          <span class="material-symbols-rounded">swap_vert</span>
+        </button>
+      </div>
+
+      <div class="converter-card">
+        <div class="converter-row">
+          <select id="to-currency" class="converter-select">
+            <option value="COP">🇨🇴 COP</option>
+            <option value="CLP">🇨🇱 CLP</option>
+            <option value="USD">🇺🇸 USD</option>
+          </select>
+          <div id="to-amount" class="converter-result">0</div>
+        </div>
+      </div>
+
+      <div class="converter-shortcuts">
+        <button class="shortcut-chip" data-amount="10000" data-currency="CLP">$10.000 CLP</button>
+        <button class="shortcut-chip" data-amount="50000" data-currency="CLP">$50.000 CLP</button>
+        <button class="shortcut-chip" data-amount="100000" data-currency="COP">$100.000 COP</button>
+        <button class="shortcut-chip" data-amount="50" data-currency="USD">$50 USD</button>
+      </div>
+
+      <p class="converter-note">Tasas referenciales Feb 2026. Verificar al momento de cambiar.</p>
+    </section>
+
+    <!-- ==================== INFO UTIL ==================== -->
+    <section id="tab-info" class="tab-panel">
+      <h2 class="section-title">Información Útil</h2>
+      <p class="section-subtitle">Todo lo que necesitan saber</p>
+
+      <div class="info-card">
+        <h3><span class="material-symbols-rounded">hotel</span> Hotel</h3>
+        <p><strong>Radisson Cartagena Ocean Pavillion</strong></p>
+        <p>Check-in: 15:00 &middot; Check-out: 12:00</p>
+        <p>Desayuno incluido todos los días</p>
+      </div>
+
+      <div class="info-card">
+        <h3><span class="material-symbols-rounded">luggage</span> Qué llevar</h3>
+        <ul>
+          <li>Protector solar SPF 50+</li>
+          <li>Sombreros y lentes de sol</li>
+          <li>Ropa muy ligera</li>
+          <li>Zapatos cómodos para calles empedradas</li>
+          <li>Traje de baño y toalla de playa</li>
+          <li>Cámara acuática</li>
+          <li>Adaptador de enchufe (Tipo A/B, igual que en USA)</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3><span class="material-symbols-rounded">tips_and_updates</span> Tips</h3>
+        <ul>
+          <li><strong>Moneda:</strong> Peso colombiano (COP). Se acepta USD en muchos lugares turísticos. Llevar efectivo para artesanías.</li>
+          <li><strong>Propinas:</strong> 10% en restaurantes (a veces incluida). Dar propina a guías y lancheros.</li>
+          <li><strong>Hidratación:</strong> Beber mucha agua. Calor húmedo constante (~38°C sensación térmica).</li>
+          <li><strong>Café del Mar:</strong> Reservar con anticipación para el atardecer (llegar 17:00).</li>
+          <li><strong>Enchufes:</strong> Tipo A/B (mismo que USA). Si llevan cargadores chilenos (tipo C), necesitarán adaptador.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3><span class="material-symbols-rounded">support_agent</span> Operador Local</h3>
+        <p><strong>Carlos — Natal Travel Cartagena</strong></p>
+        <p>Nuestro contacto para tours, traslados y cualquier necesidad en Cartagena.</p>
+        <div class="contact-buttons">
+          <a href="https://wa.me/573107037903" target="_blank" rel="noopener" class="whatsapp-btn">
+            WhatsApp Carlos
+          </a>
+          <a href="https://nataltravelcartagena.com/" target="_blank" rel="noopener" class="badge badge-ocean">
+            <span class="material-symbols-rounded">language</span> Web
+          </a>
+          <a href="https://www.tripadvisor.com/Attraction_Review-g297476-d16672954-Reviews-Natal_Concierge-Cartagena_Cartagena_District_Bolivar_Department.html" target="_blank" rel="noopener" class="badge badge-gold">
+            <span class="material-symbols-rounded">star</span> TripAdvisor
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Cartagena 2026 &middot; Familia Ibarra</p>
+    <p class="footer-sub">Hecho con cariño para nuestro viaje familiar</p>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // === TAB SWITCHING ===
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+      const tabNav = document.getElementById('tab-nav');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.tab;
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          tabPanels.forEach(p => p.classList.remove('active'));
+          document.getElementById('tab-' + target).classList.add('active');
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          window.scrollTo({ top: tabNav.offsetTop, behavior: 'smooth' });
+        });
+      });
+
+      // === ACCORDION ===
+      const dayCards = document.querySelectorAll('.day-card');
+
+      dayCards.forEach(card => {
+        const header = card.querySelector('.day-header');
+        const body = card.querySelector('.day-body');
+
+        header.addEventListener('click', () => {
+          const isActive = card.classList.contains('active');
+
+          dayCards.forEach(c => {
+            c.classList.remove('active');
+            c.querySelector('.day-body').style.maxHeight = null;
+          });
+
+          if (!isActive) {
+            card.classList.add('active');
+            body.style.maxHeight = body.scrollHeight + 'px';
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 150);
+          }
+        });
+      });
+
+      // === CAROUSEL ===
+      const carousel = document.getElementById('rosario-carousel');
+      if (carousel) {
+        const track = carousel.querySelector('.carousel-track');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const slides = carousel.querySelectorAll('.carousel-slide');
+
+        slides.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+          dot.addEventListener('click', () => {
+            track.scrollTo({ left: track.offsetWidth * i, behavior: 'smooth' });
+          });
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        let scrollTimeout;
+        track.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const activeIndex = Math.round(track.scrollLeft / track.offsetWidth);
+            dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+            slides.forEach((slide, i) => {
+              const video = slide.querySelector('video');
+              if (video && i !== activeIndex) video.pause();
+            });
+          }, 50);
+        });
+      }
+
+      // === ONDINA MENU TOGGLE ===
+      const ondinaToggle = document.getElementById('ondina-toggle');
+      const ondinaMenu = document.getElementById('ondina-menu');
+      if (ondinaToggle && ondinaMenu) {
+        ondinaToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = ondinaMenu.classList.contains('open');
+          if (isOpen) {
+            ondinaMenu.style.maxHeight = null;
+            ondinaMenu.classList.remove('open');
+            ondinaToggle.classList.remove('open');
+          } else {
+            ondinaMenu.classList.add('open');
+            ondinaMenu.style.maxHeight = ondinaMenu.scrollHeight + 'px';
+            ondinaToggle.classList.add('open');
+          }
+          // Update parent accordion height
+          const dayBody = ondinaMenu.closest('.day-body');
+          if (dayBody) {
+            setTimeout(() => { dayBody.style.maxHeight = dayBody.scrollHeight + 'px'; }, 50);
+          }
+        });
+      }
+
+      // === CURRENCY CONVERTER ===
+      const rates = { CLP_COP: 4.25, USD_COP: 4200, USD_CLP: 988 };
+      const fromAmountEl = document.getElementById('from-amount');
+      const toAmountEl = document.getElementById('to-amount');
+      const fromCurrencyEl = document.getElementById('from-currency');
+      const toCurrencyEl = document.getElementById('to-currency');
+      const swapBtn = document.getElementById('swap-btn');
+
+      function convert() {
+        const raw = fromAmountEl.value.replace(/[^0-9]/g, '');
+        const amount = parseFloat(raw) || 0;
+        const from = fromCurrencyEl.value;
+        const to = toCurrencyEl.value;
+        let result = 0;
+
+        if (from === to) result = amount;
+        else if (from === 'CLP' && to === 'COP') result = amount * rates.CLP_COP;
+        else if (from === 'COP' && to === 'CLP') result = amount / rates.CLP_COP;
+        else if (from === 'USD' && to === 'COP') result = amount * rates.USD_COP;
+        else if (from === 'COP' && to === 'USD') result = amount / rates.USD_COP;
+        else if (from === 'USD' && to === 'CLP') result = amount * rates.USD_CLP;
+        else if (from === 'CLP' && to === 'USD') result = amount / rates.USD_CLP;
+
+        if (result === 0) toAmountEl.textContent = '0';
+        else if (result < 1) toAmountEl.textContent = result.toFixed(2);
+        else toAmountEl.textContent = Math.round(result).toLocaleString('es-CL');
+      }
+
+      fromAmountEl.addEventListener('input', convert);
+      fromCurrencyEl.addEventListener('change', convert);
+      toCurrencyEl.addEventListener('change', convert);
+
+      swapBtn.addEventListener('click', () => {
+        const tempCur = fromCurrencyEl.value;
+        fromCurrencyEl.value = toCurrencyEl.value;
+        toCurrencyEl.value = tempCur;
+        convert();
+      });
+
+      document.querySelectorAll('.shortcut-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          fromAmountEl.value = parseInt(chip.dataset.amount).toLocaleString('es-CL');
+          fromCurrencyEl.value = chip.dataset.currency;
+          if (chip.dataset.currency === 'CLP') toCurrencyEl.value = 'COP';
+          else if (chip.dataset.currency === 'COP') toCurrencyEl.value = 'CLP';
+          else if (chip.dataset.currency === 'USD') toCurrencyEl.value = 'COP';
+          convert();
+        });
+      });
+
+      // === GOOGLE CALENDAR ===
+      const calendarEvents = {
+        day1: {
+          text: '✈️ Vuelo Santiago → Cartagena',
+          dates: '20260219T072500/20260219T154000',
+          details: 'AV0098 SCL 07:25→BOG 11:45 | Escala 2h25 | AV9772 BOG 14:10→CTG 15:40',
+          location: 'Aeropuerto Santiago, Chile'
+        },
+        day2: {
+          text: '🎭 Tour García Márquez — Nexperience',
+          dates: '20260220T090000/20260220T113000',
+          details: 'Tour privado a pie por casco histórico. Incluye bebida y recogida en hotel.',
+          location: 'Centro Histórico, Cartagena de Indias, Colombia'
+        },
+        day4: {
+          text: '🏖️ Fenix Beach Club — Tierra Bomba',
+          dates: '20260222T093000/20260222T170000',
+          details: 'Pasadía completo. Lancha 9:30. Incluye almuerzo, welcome drink, acceso total.',
+          location: 'Fenix Beach, Isla Tierra Bomba, Cartagena, Colombia'
+        },
+        day6: {
+          text: '🏝️ Islas del Rosario — Lancha Privada',
+          dates: '20260224T090000/20260224T170000',
+          details: 'Lancha privada 29 pies. Ruta: Marina → Isla Grande → Tour panorámico → Isla Majagua (almuerzo en Ondina) → Barú → Marina. Almuerzo NO incluido.',
+          location: 'Islas del Rosario, Cartagena, Colombia'
+        },
+        day8: {
+          text: '🏰 Tour Histórico + Café del Mar',
+          dates: '20260226T090000/20260226T210000',
+          details: 'Castillo San Felipe + Getsemaní + atardecer Café del Mar. Incluye guía bilingüe, transporte y entradas.',
+          location: 'Castillo de San Felipe de Barajas, Cartagena, Colombia'
+        },
+        day10: {
+          text: '✈️ Vuelo Cartagena → Santiago',
+          dates: '20260228T182000/20260301T053000',
+          details: 'AV9747 CTG 18:20→BOG 20:00 | Escala 1h35 | AV0097 BOG 21:35→SCL 05:30 (1 Mar)',
+          location: 'Aeropuerto Cartagena, Colombia'
+        }
+      };
+      calendarEvents['flight-ida'] = calendarEvents.day1;
+      calendarEvents['flight-vuelta'] = calendarEvents.day10;
+
+      document.querySelectorAll('.calendar-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const key = btn.dataset.calendar;
+          const evt = calendarEvents[key];
+          if (!evt) return;
+          const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+            + '&text=' + encodeURIComponent(evt.text)
+            + '&dates=' + evt.dates
+            + '&details=' + encodeURIComponent(evt.details)
+            + '&location=' + encodeURIComponent(evt.location);
+          window.open(url, '_blank');
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>
